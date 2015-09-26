@@ -45,10 +45,23 @@ public class scoresAdapter extends CursorAdapter
     public void bindView(View view, final Context context, Cursor cursor)
     {
         final ViewHolder mHolder = (ViewHolder) view.getTag();
+        //set proper versus content description
+        String homeNameWithVersus = context.getString(R.string.first_team_name_description, cursor.getString(COL_HOME), cursor.getString(COL_AWAY));
+        mHolder.home_name.setContentDescription(homeNameWithVersus);
         mHolder.home_name.setText(cursor.getString(COL_HOME));
+
         mHolder.away_name.setText(cursor.getString(COL_AWAY));
+
+        //set matchtime content description
+        String matchTimeDescription = context.getString(R.string.match_time_description, cursor.getString(COL_MATCHTIME));
+        mHolder.date.setContentDescription(matchTimeDescription);
         mHolder.date.setText(cursor.getString(COL_MATCHTIME));
+
+        //set score content description
+        String scoreDescription = context.getString(R.string.score_description, cursor.getString(COL_HOME) + cursor.getInt(COL_HOME_GOALS), cursor.getString(COL_AWAY) + cursor.getInt(COL_AWAY_GOALS));
+        mHolder.score.setContentDescription(scoreDescription);
         mHolder.score.setText(Utilies.getScores(cursor.getInt(COL_HOME_GOALS),cursor.getInt(COL_AWAY_GOALS)));
+
         mHolder.match_id = cursor.getDouble(COL_ID);
         mHolder.home_crest.setImageResource(Utilies.getTeamCrestByTeamName(
                 cursor.getString(COL_HOME)));
