@@ -1,5 +1,9 @@
 package barqsoft.footballscores;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 /**
  * Created by yehya khaled on 3/3/2015.
  */
@@ -85,5 +89,11 @@ public class Utilies
             case "Stoke City FC" : return R.drawable.stoke_city;
             default: return R.drawable.no_icon;
         }
+    }
+
+    public static boolean isNetworkAvailable(Context c) {
+        ConnectivityManager cm = (ConnectivityManager)c.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnectedOrConnecting();
     }
 }
