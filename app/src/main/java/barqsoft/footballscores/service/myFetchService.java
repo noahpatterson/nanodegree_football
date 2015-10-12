@@ -144,7 +144,7 @@ public class myFetchService extends IntentService
         final String PREMIER_LEAGUE = "398";
         final String PRIMERA_DIVISION = "399";
         final String SEGUNDA_DIVISION = "400";
-        final String SERIE_A = "401";
+        final String SERIE_A = "357";
         final String PRIMERA_LIGA = "402";
         final String Bundesliga3 = "403";
         final String EREDIVISIE = "404";
@@ -197,7 +197,8 @@ public class myFetchService extends IntentService
                         League.equals(SERIE_A)             ||
                         League.equals(BUNDESLIGA1)         ||
                         League.equals(BUNDESLIGA2)         ||
-                        League.equals(PRIMERA_DIVISION)     )
+                        League.equals(PRIMERA_DIVISION)    ||
+                        League.equals(SEGUNDA_DIVISION))
                 {
                     match_id = match_data.getJSONObject(LINKS).getJSONObject(SELF).
                             getString("href");
