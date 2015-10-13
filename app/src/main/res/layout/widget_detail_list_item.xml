@@ -6,6 +6,7 @@
     android:background="@drawable/list_item"
     android:elevation="4dp"
     android:orientation="vertical"
+    android:id="@+id/widget_list_item"
     >
 
     <LinearLayout
@@ -35,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="@string/test_text"
+                tools:text="@string/test_text"
+                android:textColor="@color/primary_dark_material_dark"
                 android:textSize="@dimen/TeamNames"
                 />
         </LinearLayout>
@@ -53,8 +55,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/test_text"
+                tools:text="@string/test_text"
                 android:textSize="@dimen/Score"
+                android:textColor="@color/primary_dark_material_dark"
                 />
 
             <TextView
@@ -64,7 +67,8 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/test_text"
+                tools:text="@string/test_text"
+                android:textColor="@color/primary_dark_material_dark"
                 />
 
         </LinearLayout>
@@ -89,9 +93,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="@string/test_text"
+                tools:text="@string/test_text"
                 android:textSize="@dimen/TeamNames"
                 android:importantForAccessibility="no"
+                android:textColor="@color/primary_dark_material_dark"
                 />
         </LinearLayout>
     </LinearLayout>
