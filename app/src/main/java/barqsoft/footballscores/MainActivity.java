@@ -20,19 +20,6 @@ public class MainActivity extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Stetho is a tool created by facebook to view your database in chrome inspect.
-        // The code below integrates Stetho into your app. More information here:
-        // http://facebook.github.io/stetho/
-        Stetho.initialize(
-                Stetho.newInitializerBuilder(this)
-                        .enableDumpapp(
-                                Stetho.defaultDumperPluginsProvider(this))
-                        .enableWebKitInspector(
-                                Stetho.defaultInspectorModulesProvider(this))
-                        .build());
-
-        ///////////////
-
         setContentView(R.layout.activity_main);
         Log.d(LOG_TAG, "Reached MainActivity onCreate");
         if (savedInstanceState == null) {
@@ -72,9 +59,9 @@ public class MainActivity extends ActionBarActivity
     @Override
     protected void onSaveInstanceState(Bundle outState)
     {
-        Log.v(save_tag,"will save");
-        Log.v(save_tag,"fragment: "+String.valueOf(my_main.mPagerHandler.getCurrentItem()));
-        Log.v(save_tag,"selected id: "+selected_match_id);
+//        Log.v(save_tag,"will save");
+//        Log.v(save_tag,"fragment: "+String.valueOf(my_main.mPagerHandler.getCurrentItem()));
+//        Log.v(save_tag,"selected id: "+selected_match_id);
         outState.putInt("Pager_Current",my_main.mPagerHandler.getCurrentItem());
         outState.putInt("Selected_match",selected_match_id);
         getSupportFragmentManager().putFragment(outState,"my_main",my_main);
@@ -84,9 +71,9 @@ public class MainActivity extends ActionBarActivity
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState)
     {
-        Log.v(save_tag,"will retrive");
-        Log.v(save_tag,"fragment: "+String.valueOf(savedInstanceState.getInt("Pager_Current")));
-        Log.v(save_tag,"selected id: "+savedInstanceState.getInt("Selected_match"));
+//        Log.v(save_tag,"will retrive");
+//        Log.v(save_tag,"fragment: "+String.valueOf(savedInstanceState.getInt("Pager_Current")));
+//        Log.v(save_tag,"selected id: "+savedInstanceState.getInt("Selected_match"));
         current_fragment = savedInstanceState.getInt("Pager_Current");
         selected_match_id = savedInstanceState.getInt("Selected_match");
         my_main = (PagerFragment) getSupportFragmentManager().getFragment(savedInstanceState,"my_main");

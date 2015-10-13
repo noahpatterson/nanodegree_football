@@ -33,8 +33,6 @@ public class TodayScoresWidgetRemoteViewService extends RemoteViewsService {
             DatabaseContract.scores_table.AWAY_COL,
             DatabaseContract.scores_table.HOME_GOALS_COL,
             DatabaseContract.scores_table.AWAY_GOALS_COL,
-            DatabaseContract.scores_table.DATE_COL,
-            DatabaseContract.scores_table.MATCH_ID,
             DatabaseContract.scores_table.TIME_COL
     };
 
@@ -43,9 +41,7 @@ public class TodayScoresWidgetRemoteViewService extends RemoteViewsService {
     static final int INDEX_AWAY_TEAM = 2;
     static final int INDEX_HOME_GOALS = 3;
     static final int INDEX_AWAY_GOALS = 4;
-    static final int INDEX_MATCH_DATE = 5;
-    static final int INDEX_MATCH_ID = 6;
-    static final int INDEX_MATCH_TIME = 7;
+    static final int INDEX_MATCH_TIME = 5;
 
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
@@ -69,7 +65,7 @@ public class TodayScoresWidgetRemoteViewService extends RemoteViewsService {
                 final long identityToken = Binder.clearCallingIdentity();
 
                 Date fragmentdate = new Date(System.currentTimeMillis());
-                SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat mformat = new SimpleDateFormat(getString(R.string.match_date_format));
                 String formattedDate = mformat.format(fragmentdate);
                 Uri scoresForDateUri = DatabaseContract.scores_table.buildScoreWithDate();
                 data = getContentResolver().query(scoresForDateUri,
@@ -102,8 +98,6 @@ public class TodayScoresWidgetRemoteViewService extends RemoteViewsService {
                 RemoteViews views = new RemoteViews(getPackageName(),
                         R.layout.widget_detail_list_item);
 
-                int scoresId = data.getInt(INDEX_SCORES_ID);
-                int matchId = data.getInt(INDEX_MATCH_ID);
                 String homeName = data.getString(INDEX_HOME_TEAM);
                 String awayName = data.getString(INDEX_AWAY_TEAM);
                 int homeGoals = data.getInt(INDEX_HOME_GOALS);

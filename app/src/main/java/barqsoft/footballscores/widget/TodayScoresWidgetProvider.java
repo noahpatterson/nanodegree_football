@@ -21,6 +21,7 @@ import barqsoft.footballscores.service.TodayScoresWidgetRemoteViewService;
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class TodayScoresWidgetProvider extends AppWidgetProvider {
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         int[] allWidgetIds = appWidgetManager.getAppWidgetIds(
                 new ComponentName(context, getClass()));
