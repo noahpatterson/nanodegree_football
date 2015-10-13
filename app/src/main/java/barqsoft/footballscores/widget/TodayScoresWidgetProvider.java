@@ -28,9 +28,9 @@ public class TodayScoresWidgetProvider extends AppWidgetProvider {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_detail);
 
             // Create an Intent to launch MainActivity
-            Intent intent = new Intent(context, MainActivity.class);
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-            views.setOnClickPendingIntent(R.id.widget, pendingIntent);
+            Intent imageIntent = new Intent(context, MainActivity.class);
+            PendingIntent imagePendingIntent = PendingIntent.getActivity(context, 0, imageIntent, 0);
+            views.setOnClickPendingIntent(R.id.widget, imagePendingIntent);
 
             // Set up the collection
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
@@ -38,16 +38,12 @@ public class TodayScoresWidgetProvider extends AppWidgetProvider {
             } else {
                 setRemoteAdapterV11(context, views);
             }
-//            boolean useDetailActivity = context.getResources()
-//                    .getBoolean(R.bool.use_detail_activity);
-//            Intent clickIntentTemplate = useDetailActivity
-//                    ? new Intent(context, DetailActivity.class)
-//                    : new Intent(context, MainActivity.class);
-//            PendingIntent clickPendingIntentTemplate = TaskStackBuilder.create(context)
-//                    .addNextIntentWithParentStack(clickIntentTemplate)
-//                    .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-//            views.setPendingIntentTemplate(R.id.widget_list, clickPendingIntentTemplate);
-            views.setEmptyView(R.id.widget_list, R.id.widget_empty);
+
+            Intent clickIntentTemplate = new Intent(context, MainActivity.class);
+            PendingIntent clickPendingIntentTemplate = TaskStackBuilder.create(context)
+                    .addNextIntentWithParentStack(clickIntentTemplate)
+                    .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+            views.setPendingIntentTemplate(R.id.widget_list, clickPendingIntentTemplate);
 
             // Tell the AppWidgetManager to perform an update on the current app widget
             appWidgetManager.updateAppWidget(appWidgetId, views);

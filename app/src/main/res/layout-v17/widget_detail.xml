@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/widget_margin"
-    android:background="@drawable/list_item">
+    android:background="@drawable/list_item"
+    >
 
 
     <LinearLayout
@@ -20,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/title_widget_detail"
             android:src="@drawable/ic_launcher"
             />
         <TextView
@@ -59,7 +60,7 @@
             android:layout_height="match_parent"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
-            android:text="@string/no_network_available"
+            android:text="@string/no_data"
             android:textAppearance="?android:textAppearanceLarge"/>
     </FrameLayout>
 

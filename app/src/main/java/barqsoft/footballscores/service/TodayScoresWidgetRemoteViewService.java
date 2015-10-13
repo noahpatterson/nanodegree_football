@@ -1,6 +1,7 @@
 package barqsoft.footballscores.service;
 
 import android.annotation.TargetApi;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -15,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import barqsoft.footballscores.DatabaseContract;
+import barqsoft.footballscores.MainActivity;
 import barqsoft.footballscores.R;
 import barqsoft.footballscores.Utilies;
 
@@ -66,10 +68,9 @@ public class TodayScoresWidgetRemoteViewService extends RemoteViewsService {
                 // that calls use our process and permission
                 final long identityToken = Binder.clearCallingIdentity();
 
-//                Date fragmentdate = new Date(System.currentTimeMillis());
-//                SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
-//                String formattedDate = mformat.format(fragmentdate);
-                String formattedDate = "2015-10-11";
+                Date fragmentdate = new Date(System.currentTimeMillis());
+                SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
+                String formattedDate = mformat.format(fragmentdate);
                 Uri scoresForDateUri = DatabaseContract.scores_table.buildScoreWithDate();
                 data = getContentResolver().query(scoresForDateUri,
                         MATCH_COLUMNS,
@@ -133,12 +134,6 @@ public class TodayScoresWidgetRemoteViewService extends RemoteViewsService {
                 }
 
                 final Intent fillInIntent = new Intent();
-//                String locationSetting =
-//                        Utility.getPreferredLocation(DetailWidgetRemoteViewService.this);
-//                Uri weatherUri = WeatherContract.WeatherEntry.buildWeatherLocationWithDate(
-//                        locationSetting,
-//                        dateInMillis);
-//                fillInIntent.setData(weatherUri);
                 views.setOnClickFillInIntent(R.id.widget_list_item, fillInIntent);
                 return views;
             }
